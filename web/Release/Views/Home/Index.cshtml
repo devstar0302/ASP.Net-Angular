@@ -1,0 +1,146 @@
+﻿@using Models;
+
+<link rel="stylesheet" href="~/Content/swiper.min.css">
+
+        <div class="header">
+            <h2>@ViewBag.movie.header</h2>
+            <p>@ViewBag.movie.headerSub</p>
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        @for (int i = 0; i < ViewBag.movie.pages.Count; ++i)
+                        {
+                            if (i == 0)
+                            {
+                                <li class="active"><a data-toggle="tab" href="#@ViewBag.movie.pages[i].name">@ViewBag.movie.pages[i].name <span class="sr-only">(current)</span></a></li>
+                            }
+                            else
+                            {
+                                <li><a data-toggle="tab" href="#@ViewBag.movie.pages[i].name">@ViewBag.movie.pages[i].name</a></li>
+                            }
+                        }
+                        
+                    </ul>                    
+                </div>
+            </div>
+        </nav>
+        <div class="tab-content" >
+            @{int pageCount = 1; string inActive = ""; }
+            @foreach (Models.Page page in ViewBag.movie.pages)
+            {
+                if (pageCount == 1)
+                {
+                    inActive = "in active";
+                }else
+                {
+                    inActive = "";
+                }
+                pageCount++;
+                <div id="@page.name" class="tab-pane fade @inActive">
+                    @foreach (Models.Section pageSection in page.sections)
+                    {
+                        if (pageSection.sectionType == "imagesribbon")
+                        {
+                            <div class="swiper-container div-@page.GetHashCode()">
+                                <div class="swiper-wrapper">
+                                    @foreach (SectionDataImagesRibbon image in pageSection.sectionDataImagesRibbon)
+                                    {
+                                        <div class="swiper-slide">
+                                            <div id="sliderImage">
+                                                <img src="@image.thumnail" alt="" style="width:164px;height:86px;" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <script>
+                                var swiper = new Swiper('.div-@page.GetHashCode()', {
+                                    paginationClickable: true,
+                                    spaceBetween: 0
+                                });
+                            </script>
+                        }
+                        else if (pageSection.sectionType == "textheader")
+                        {
+                            <div class="header">
+                                <p>@pageSection.sectionName</p>
+                                <p>@pageSection.sectionNameSub</p>
+                            </div>
+                        }
+                        else if (pageSection.sectionType == "textblock")
+                        {
+                            <div id="discription" style="padding:20px;">
+                                <p>
+                                    @pageSection.sectionText
+                                </p>
+                            </div>
+                        }
+                        else if (pageSection.sectionType == "textlist")
+                        {
+                            <div id="reviews_details" style="padding:20px;border:none;">
+                                <h4>@pageSection.sectionName</h4>
+                                <hr />
+                                @foreach (SectionDataTextList textItem in pageSection.sectionDataTextList)
+                                {
+                                    <p style="font-style:italic">@textItem.text</p>
+                                    <p><a href="@textItem.link">@textItem.textsub</a></p>
+                                    <hr />
+                                }
+                            </div>
+                        }
+                        else if (pageSection.sectionType == "imagesscroll")
+                        {
+                            <div style="padding:20px;border:1px solid #DBD8D8 ">
+                                <p><strong>@pageSection.sectionName</strong></p>
+                                <div class="swiper-container div-@pageSection.GetHashCode()">
+                                    <div class="swiper-wrapper character_wrapper">
+                                        @foreach (SectionDataImagesScroll image in pageSection.sectionDataImagesScroll)
+                                        {
+                                            <div class="swiper-slide">
+                                                <div id="characterCard" style="text-align:center;">
+                                                    <img src="@image.image" alt="" style="height:66.14px;width:127px;" />
+                                                    <p style="font-size:12px;margin-top:10px;">@image.title</p>
+                                                    <p style="font-size:12px;">@image.titleSub</p>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                var swiper = new Swiper('.div-@pageSection.GetHashCode()', {
+                                    paginationClickable: true,
+                                    spaceBetween: 0
+                                });
+                            </script>
+                        }
+                        else if (pageSection.sectionType == "imageslist")
+                        {
+                            <table>
+                                <tbody style="width:100%">
+                                    @for (int i = 0, count = 0; i <= (pageSection.sectionDataImagesList.Count - 1) / 3 && count < pageSection.sectionDataImagesList.Count; ++i)
+                                    {
+                                        <tr>
+                                            @for (int j = 0; j < 3 && count < pageSection.sectionDataImagesList.Count; ++j)
+                                            {
+                                                <td style="width:33.33%;padding-top:20px;">
+                                                    <div style="text-align:center;">
+                                                        <img src="@pageSection.sectionDataImagesList[count].image" alt="" style="width:164px;height:86px;" />
+                                                        <p>@pageSection.sectionDataImagesList[count].title</p>
+                                                        <p>@pageSection.sectionDataImagesList[count].titleSub</p>
+                                                    </div>
+                                                </td>
+                                                count++;
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }
+                </div>
+            }            
+        </div>

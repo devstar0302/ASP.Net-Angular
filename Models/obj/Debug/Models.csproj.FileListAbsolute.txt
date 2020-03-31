@@ -1,0 +1,31 @@
+C:\Users\admin\Desktop\Quantum\Upwork\Spirited-Away-master\Spirited-Away-master\Models\bin\Debug\Models.dll
+C:\Users\admin\Desktop\Quantum\Upwork\Spirited-Away-master\Spirited-Away-master\Models\bin\Debug\Models.pdb
+C:\Users\admin\Desktop\Quantum\Upwork\Spirited-Away-master\Spirited-Away-master\Models\obj\Debug\Models.dll
+C:\Users\admin\Desktop\Quantum\Upwork\Spirited-Away-master\Spirited-Away-master\Models\obj\Debug\Models.pdb
+D:\Projects\Upworks\Eli Faron\QuantumInterface\Models\bin\Debug\Models.dll
+D:\Projects\Upworks\Eli Faron\QuantumInterface\Models\bin\Debug\Models.pdb
+D:\Projects\Upworks\Eli Faron\QuantumInterface\Models\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\Upworks\Eli Faron\QuantumInterface\Models\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\Upworks\Eli Faron\QuantumInterface\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\Projects\Upworks\Eli Faron\QuantumInterface\Models\obj\Debug\Models.dll
+D:\Projects\Upworks\Eli Faron\QuantumInterface\Models\obj\Debug\Models.pdb
+D:\Projects\Upworks\Eli Faron\Quantum\Models\bin\Debug\Models.dll
+D:\Projects\Upworks\Eli Faron\Quantum\Models\bin\Debug\Models.pdb
+D:\Projects\Upworks\Eli Faron\Quantum\Models\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\Upworks\Eli Faron\Quantum\Models\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\Upworks\Eli Faron\Quantum\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\Projects\Upworks\Eli Faron\Quantum\Models\obj\Debug\Models.dll
+D:\Projects\Upworks\Eli Faron\Quantum\Models\obj\Debug\Models.pdb
+G:\RND\Working\QuantumInterface\Models\bin\Debug\Models.dll
+G:\RND\Working\QuantumInterface\Models\bin\Debug\Models.pdb
+G:\RND\Working\QuantumInterface\Models\bin\Debug\Newtonsoft.Json.dll
+G:\RND\Working\QuantumInterface\Models\bin\Debug\Newtonsoft.Json.xml
+G:\RND\Working\QuantumInterface\Models\obj\Debug\Models.dll
+G:\RND\Working\QuantumInterface\Models\obj\Debug\Models.pdb
+C:\Users\admin\Desktop\Quantum\QuantumInterface\Models\bin\Debug\Models.dll
+C:\Users\admin\Desktop\Quantum\QuantumInterface\Models\bin\Debug\Models.pdb
+C:\Users\admin\Desktop\Quantum\QuantumInterface\Models\bin\Debug\Newtonsoft.Json.dll
+C:\Users\admin\Desktop\Quantum\QuantumInterface\Models\bin\Debug\Newtonsoft.Json.xml
+C:\Users\admin\Desktop\Quantum\QuantumInterface\Models\obj\Debug\Models.dll
+C:\Users\admin\Desktop\Quantum\QuantumInterface\Models\obj\Debug\Models.pdb
+C:\Users\admin\Desktop\Quantum\QuantumInterface\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache

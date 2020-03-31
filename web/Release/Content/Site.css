@@ -1,0 +1,182 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+    .header
+    {
+        background-color: #c0392b;
+        padding:20px;
+    }
+
+    .header p
+    {
+        color:#fff;
+    }
+
+    .header h2
+    {
+        color:#fff;
+    }
+
+    .navbar
+    {
+        border-radius:0px;
+    }
+        .navbar-default {
+  background-color: #c0392b;
+  border-color: #c0392b;
+}
+.navbar-default .navbar-brand {
+  color: #ffffff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #fff;
+}
+.navbar-default .navbar-text {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > .active
+{
+    border-bottom:5px solid #fff;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #c0392b;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #fff;
+  background-color: #c0392b;
+}
+.navbar-default .navbar-toggle {
+  border-color: #c0392b;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #c0392b;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ffffff;
+}
+.navbar-default .navbar-link {
+  color: #ffffff;
+}
+.navbar-default .navbar-link:hover {
+  color: #fff;
+}
+
+.swiper-container {
+        width: 100%;
+        height: 100%;
+        padding:10px;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    #reviews_main
+    {
+        margin-top:10px;
+        border-bottom:1px solid #DBD8D8;
+    }
+
+    .shadow
+    {
+        box-shadow: 0 0 2px #000;
+    }
+
+    td img {
+    max-width:100%;
+    height:auto;
+    }
+
+    #characterCard
+    {
+        max-width:100%;
+        height:auto;
+    }
+
+    
+    #characterCard img
+    {
+        max-width:100%;
+        height:auto;
+    }
+    td p
+    {
+        padding:0px;
+        margin:0px;
+    }
+
+    div#sliderImage {
+        min-width: 50px;
+        max-width:400px;
+        max-height:300px;
+        padding: 0px;
+        margin:0px;
+        display:inline-block;
+    }
+
+    #swiper-container p
+    {
+        font-size:12px;
+    }
+
+    #characterCard img
+    {
+        max-height:150px;
+    }

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{movies.header}} - {{movies.headerSub}}</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/swiper.min.css">
+    <script src="~/Scripts/swiper.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <div ng-app="WebInterfaceApp">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" style="max-width: 100%" ng-controller="HomeController">
+                        <li name="navbarMenu" ng-repeat="page in movies.pages" ng-class="{'active': selectedMenu == page.name }"><a data-toggle="tab" href="javascript:void(0)" ng-click="topMenuAction(page.name, $index)">{{page.name}}</a></li>
+                    </ul>
+                </div>                    
+            </div>
+        </nav>
+        <ajaxloader></ajaxloader>
+
+        <div id="ui-view" ui-view></div>
+    </div>
+
+</body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+</html>

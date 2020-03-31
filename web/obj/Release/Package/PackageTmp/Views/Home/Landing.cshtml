@@ -1,0 +1,149 @@
+﻿@{
+    Layout = null;
+}
+
+
+<div class="tab-content" style="padding-top: 66px;" ng-init="flag=true">
+    <div ng-repeat="page in movies.pages" id="{{ page.name }}" ng-class="{'tab-pane fade in active': selectedMenu==page.name, 'tab-pane fade': $index > 0  }" ng-if="selectedMenu==page.name" ng-init="sectionIndex = $index" page-infinite-scroll="sectionManage(sectionIndex)">
+        <div ng-repeat="pageSection in page.sections" ng-class="swiper-container-horizontal">
+            <div ng-if="pageSection.t == 'imagesribbon'" class="owl-carousel" carousel ng-mouseover="test()">
+                <carousel-item ng-repeat="image in pageSection.sIR" class="item sliderImage">
+                    <div id="sliderImage">                        
+                        <a href="{{image.i}}"><div class="sliderImageImage" style="background-image:url({{image.t.substring(0, 1) == '/' ? 'http://52.63.119.118/images/' : ''}}{{image.t}});"></div></a>
+                    </div>
+                </carousel-item>
+            </div>
+            <div ng-if="pageSection.t == 'textheader'" class="header" style="margin-top: 5px;" ng-swipe-left="pageManage(flag,movies.pages[sectionIndex + 1].n,sectionIndex)" ng-swipe-right="pageManage(flag,movies.pages[sectionIndex - 1].n,sectionIndex)">
+                <p>
+                    <b><a style="color: white;" href="javascript:void(0)" ng-click="linkAction(pageSection.n)">{{ pageSection.n }}</a></b>
+                    <br />
+                    <a style="color: white;" href="javascript:void(0)" ng-click="linkAction(pageSection.ns)">{{ pageSection.ns }}</a>
+                </p>
+            </div>
+            <div ng-if="pageSection.t == 'textblock'" id="discription" style="padding: 7px;" ng-swipe-left="pageManage(flag,movies.pages[sectionIndex + 1].n,sectionIndex)" ng-swipe-right="pageManage(flag,movies.pages[sectionIndex - 1].n,sectionIndex)">
+                <p>
+                    {{ pageSection.tx }} <a href="https://en.wikipedia.org/wiki/{{ movies.name }} " target="_self">Wikipedia</a>
+                    <div ng-if="pageSection.sF !==undefined">
+                        <span ng-repeat="fact in pageSection.sF">
+                            <text>{{ fact.f }}:</text>
+                            <span ng-repeat="tag in fact.ts">
+                                <a href="javascript:void(0)" ng-click="linkAction(tag)">{{ tag }}</a>{{$last ? '' : ', '}}
+                            </span>
+                            <br />
+                        </span>
+                    </div>
+                </p>
+            </div>
+            <div ng-if="pageSection.t == 'textlist'" id="discription" style="padding: 7px;" ng-swipe-left="pageManage(flag,movies.pages[sectionIndex + 1].n,sectionIndex)" ng-swipe-right="pageManage(flag,movies.pages[sectionIndex - 1].n,sectionIndex)">
+                <div id="reviews_details" style="border: none;">
+                    <small style="{{pageSection.n !==undefined ? '' : 'display: none;'}}"><b><a href="javascript:void(0)" ng-click="linkAction(pageSection.n)">{{ pageSection.n }}</a></b></small>                    
+                    <div ng-repeat="textItem in pageSection.sTL" style="font-size: 10px; margin-bottom: 2px;">
+                        <div style="overflow: auto;">
+                            <div style="float: left;"><a href="javascript:void(0)" ng-click="linkAction(textItem.t)"><div class="textItemImage" style="background-image:url({{textItem.i.substring(0, 1) == '/' ? 'http://52.63.119.118/images/' : ''}}{{textItem.i}});"></div></a></div>
+                            <div style="margin-left: 100px;">
+                                <p style="font-size: 10px; padding: 0px; margin: 0px;">{{ textItem.tx | limitTo: 140 }}{{textItem.tx.length > 140 ? '...' : ''}}</p>
+                                <p style="font-size: 10px; padding: 0px; margin-top: 5px;"><a href="javascript:void(0)" ng-click="linkAction(textItem.t)">{{textItem.t}}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-if="pageSection.t == 'imagesscroll'" style="padding: 7px; vertical-align:top;">
+                <small><b>{{ pageSection.n | limitTo: 60 }}{{pageSection.n.length > 60 ? '...' : ''}}</b></small>
+                <div class="owl-carousel character_wrapper" carousel>
+                    <carousel-item ng-repeat="image in pageSection.sIS" class="swiper-slide" style="width:90px; vertical-align:top;" class="item">
+                        <div id="characterCard" style="text-align: center; vertical-align:top;">
+                            <a href="javascript:void(0)" ng-click="linkAction(image.t)"><div class="textItemImage" style="background-image:url({{image.i.substring(0, 1) == '/' ? 'http://52.63.119.118/images/' : ''}}{{image.i}});"></div></a>
+                            <p style="font-size: 8px; margin-top: 10px;">
+                                {{ image.t | limitTo: 20 }}{{image.t.length > 20 ? '...' : ''}}
+                                <br />
+                                {{image.ts}}
+                            </p>
+                        </div>
+                    </carousel-item>
+                </div>              
+            </div>
+            <table ng-if="pageSection.t == 'imageslist'" style="margin-top: 5px; font-size: 12px;" ng-swipe-left="pageManage(flag,movies.pages[sectionIndex + 1].n,sectionIndex)" ng-swipe-right="pageManage(flag,movies.pages[sectionIndex - 1].n,sectionIndex)">
+                <tbody style="width: 100%">
+                    <tr ng-repeat="sdil in pageSection.sIL" ng-switch on="$index % 3">
+                        <td ng-switch-when="0" style="width: 33.33%; padding-top: 20px;">
+                            <div style="text-align: center;">
+                                <a href="javascript:void(0)" ng-click="linkAction(pageSection.sIL[$index].t)">
+                                    <div class="imageListImage" style="background-image:url({{pageSection.sIL[$index].i.substring(0, 1) == '/' ? 'http://52.63.119.118/images/' : ''}}{{pageSection.sIL[$index].i}});"></div>
+                                    <p>{{ pageSection.sIL[$index].t | limitTo: 20 }}{{pageSection.sIL[$index].t.length > 20 ? '...' : ''}}</p>
+                                    <p>{{ pageSection.sIL[$index].ts }}</p>
+                                </a>
+                            </div>
+                        </td>
+                        <td ng-switch-when="0" style="width: 33.33%; padding-top: 20px;">
+                            <div style="text-align: center;" ng-show="pageSection.sIL[$index+1]">
+                                <a href="javascript:void(0)" ng-click="linkAction(pageSection.sIL[$index+1].t)">
+                                    <div class="imageListImage" style="background-image:url({{pageSection.sIL[$index+1].i.substring(0, 1) == '/' ? 'http://52.63.119.118/images/' : ''}}{{pageSection.sIL[$index+1].i}});"></div>
+                                    <p>{{ pageSection.sIL[$index+1].t | limitTo: 20 }}{{pageSection.sIL[$index+1].t.length > 20 ? '...' : ''}}</p>
+                                    <p>{{ pageSection.sIL[$index+1].ts }}</p>
+                                </a>
+                            </div>
+                        </td>
+                        <td ng-switch-when="0" style="width: 33.33%; padding-top: 20px;">
+                            <div style="text-align: center;" ng-show="pageSection.sIL[$index+2]">
+                                <a href="javascript:void(0)" ng-click="linkAction(pageSection.sIL[$index+2].t)">
+                                    <div class="imageListImage" style="background-image:url({{pageSection.sIL[$index+2].i.substring(0, 1) == '/' ? 'http://52.63.119.118/images/' : ''}}{{pageSection.sIL[$index+2].i}});"></div>
+                                    <p>{{ pageSection.sIL[$index+2].t | limitTo: 20 }}{{pageSection.sIL[$index+2].t.length > 20 ? '...' : ''}}</p>
+                                    <p>{{ pageSection.sIL[$index+2].ts }}</p>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div carousel ng-if="pageSection.t == 'videosribbon'" class="owl-carousel">
+                <carousel-item ng-repeat="video in pageSection.sVR" class="item">
+                    <div style="text-align: left; font-size:x-small;width: 260px;">
+                        <a href="https://www.youtube.com/watch?v={{video.v}}" class="recordVid" target="_blank">
+                            <span>▶</span>
+                            <img ng-src="{{video.t}}" alt="" style="max-height: 146.25px;" />
+                            {{ video.ti | limitTo: 40 }}{{video.ti.length > 40 ? '...' : ''}}
+                        </a>
+                        {{video.c}}
+                    </div>
+                </carousel-item>
+            </div>
+            <!--<div ng-if="pageSection.t == 'video'" id="video" style="display: none; padding: 7px;" ng-swipe-left="pageManage(flag,movies.pages[sectionIndex + 1].n,sectionIndex)" ng-swipe-right="pageManage(flag,movies.pages[sectionIndex - 1].n,sectionIndex)">
+                <div style="border: none;" class="videoWrapper" ng-repeat="video in pageSection.sectionVideosRibbon">
+                    <youtube-video video-id="video.video"></youtube-video>
+                </div>
+            </div> -->
+        </div>
+        <div id="bottomAnchor" ng-style="{ 'height': '40px', 'line-height': '40px', 'text-align': 'center', 'visibility': page.loadingSections || page.sectionsLoaded ? 'visible' : 'hidden' }">
+            <span ng-if="page.loadingSections"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" style="height:100px; width:151px;" /></span>
+            <span ng-if="page.sectionsLoaded">-</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="swiper-container">
+                    <small><b>{{ pageSection.n | limitTo: 60 }}{{pageSection.n.length > 60 ? '...' : ''}}</b></small>
+                    <div class="swiper-wrapper character_wrapper">
+                        <div ng-repeat="image in pageSection.sectionImagesScroll" class="swiper-slide" style="width:90px; vertical-align:top;">
+                            <div id="characterCard" style="text-align: center; vertical-align:top;">
+                                <a href="javascript:void(0)" ng-click="linkAction(image.link)"><img ng-src="{{image.image}}" alt="" style="height: 66.14px; width: 90px;" /></a>
+                                <p style="font-size: 8px; margin-top: 10px;">
+                                    {{ image.ti | limitTo: 20 }}{{image.ti.length > 20 ? '...' : ''}}
+                                    <br />
+                                    {{image.s}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+<!-- <div class="swiper-container" ng-if="pageSection.sectionType == 'imagesribbon'">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" ng-repeat="image in pageSection.sectionImagesRibbon">
+            <div id="sliderImage">
+                <a href="{{image.image}}"><img ng-src="{{image.thumnail}}" alt="" /></a>
+            </div>
+        </div>
+    </div>
+</div> -->
+
